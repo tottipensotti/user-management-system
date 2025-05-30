@@ -13,16 +13,6 @@ This project is designed to help you practice and master core Python skills by b
 - Optional: basic persistence with file I/O
 ---
 
-## 📁 Project Structure
-```bash
-user_project/
-├── main.py            # Entry point to test functions
-├── users.py           # User classes and methods
-└── utils/
-    └── crud.py        # CRUD functions
-    └── auth.py        # Auth functions
-```
-
 ## Project Roadmap
 
 ### Phase 1: Core CRUD Logic
