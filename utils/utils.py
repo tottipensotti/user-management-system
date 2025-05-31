@@ -1,7 +1,6 @@
 from models.session import session
 from models.users import BaseUser, users_list
-from typing import Optional, Callable
-from functools import wraps
+from typing import Optional
 
 def user_auth(user_name: str, password: str) -> Optional[BaseUser]:
     for user in users_list:
