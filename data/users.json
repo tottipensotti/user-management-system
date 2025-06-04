@@ -1,0 +1,101 @@
+[
+    {
+        "id": 0,
+        "name": "admin",
+        "user_name": "admin",
+        "email": "admin@admin.com",
+        "role": "admin",
+        "password": "admin",
+        "country": "Admin"
+    },
+    {
+        "id": 1,
+        "name": "Bruce Wayne",
+        "user_name": "batman",
+        "email": "batman@gotham.com",
+        "role": "user",
+        "password": "iambatman",
+        "country": "United States"
+    },
+    {
+        "id": 2,
+        "name": "Michael Scott",
+        "user_name": "mscott",
+        "email": "mscott@dundermifflin.com",
+        "role": "user",
+        "password": "worldsbestboss",
+        "country": "United States"
+    },
+    {
+        "id": 3,
+        "name": "Ross Geller",
+        "user_name": "rgeller",
+        "email": "ross@friends.com",
+        "role": "user",
+        "password": "dinosaurs123",
+        "country": "United States"
+    },
+    {
+        "id": 4,
+        "name": "Darth Vader",
+        "user_name": "dvader",
+        "email": "vader@empire.com",
+        "role": "user",
+        "password": "darkside",
+        "country": "Death Star"
+    },
+    {
+        "id": 5,
+        "name": "Satoshi Nakamoto",
+        "user_name": "satoshi",
+        "email": "satoshi@bitcoin.org",
+        "role": "user",
+        "password": "btc4life",
+        "country": "Unknown"
+    },
+    {
+        "id": 6,
+        "name": "Walter White",
+        "user_name": "heisenberg",
+        "email": "heisenberg@abq.com",
+        "role": "user",
+        "password": "saymyname",
+        "country": "United States"
+    },
+    {
+        "id": 7,
+        "name": "Marge Simpson",
+        "user_name": "msimpson",
+        "email": "marge@springfield.com",
+        "role": "user",
+        "password": "bluemarge",
+        "country": "United States"
+    },
+    {
+        "id": 8,
+        "name": "Sarah Connor",
+        "user_name": "sconnor",
+        "email": "sconnor@resistance.org",
+        "role": "user",
+        "password": "skynet",
+        "country": "United States"
+    },
+    {
+        "id": 9,
+        "name": "Leia Skywalker",
+        "user_name": "princess_leia",
+        "email": "leia@rebellion.org",
+        "role": "user",
+        "password": "hope",
+        "country": "Alderaan"
+    },
+    {
+        "id": 10,
+        "name": "Daenerys Targaryen",
+        "user_name": "khalessi",
+        "email": "daenerys@dragonstone.com",
+        "role": "user",
+        "password": "dracarys",
+        "country": "Westeros"
+    }
+]
