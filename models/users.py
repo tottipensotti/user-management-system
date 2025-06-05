@@ -1,21 +1,21 @@
 from utils.decorators import requires_auth
+from utils.utils import generate_user_id, generate_password
 from models.data import users_db
 
 class BaseUser:
-    def __init__(self, id: int, name: str, user_name: str, email: str, role: str, pwd: str, country: str):
+    def __init__(self, name: str, user_name: str, email: str, country: str, role: str, pwd: str = None):
         global users_db
-        if any(user.user_id == id for user in users_db):
-            print(f"[ERROR] User ID {id} already exists.")
-        
-        self.user_id: int = id
+        if any(user.user_name == user_name for user in users_db):
+            print(f"[ERROR] User {user_name} already exists.")
+
+        self.user_id: int = generate_user_id()
         self.name: str = name
         self.user_name: str = user_name
         self.user_email: str = email
         self.user_role: str = role
-        self.__password: str = pwd
         self.country: str = country
+        self.__password: str = pwd if pwd else generate_password()
         users_db.append(self)
-        print(f"[INFO] User {self.user_id} successfully created.")
     
     def show_info(self) -> str:
         user_info = (
@@ -34,19 +34,30 @@ class BaseUser:
         return self.__password == pwd
 
 class AdminUser(BaseUser):
-    def __init__(self, id: int, name: str, user_name: str, email: str, role: str, pwd: str, country: str):
-        super().__init__(id, name, user_name, email, role, pwd, country)
+    def __init__(self, name: str, user_name: str, email: str, country: str, role: str = "admin", pwd: str = "admin"):
+        super().__init__(name, user_name, email, country, role, pwd)
 
     @requires_auth
-    def create_user(self, user_id: int, name: str, user_name: str, email: str, pwd: str, country: str, role: str = "user"):
+    def create_user(self, name: str, user_name: str, email: str, country: str, role: str = "user", pwd: str = None):
         global users_db
-        if any(user.user_id == user_id for user in users_db):
-            print(f"[ERROR] User ID {user_id} already exists.")
+        if any(user.user_name == user_name for user in users_db):
+            print(f"[ERROR] User {user_name} already exists.")
+            return
         
-        new_user = BaseUser(user_id, name, user_name, email, role, pwd, country)
-        users_db.append(new_user)
-
-        print(f"[INFO] User {user_id} successfully created.")
+        cls = AdminUser if role == "admin" else BaseUser    
+        
+        try:
+            cls(
+                name=name,
+                user_name=user_name,
+                email=email,
+                country=country,
+                role=role,
+                pwd=pwd
+            )
+            print(f"[INFO] User {user_name} successfully created.")
+        except ValueError as e:
+            print(f"[ERROR] {e}")
 
     @requires_auth
     def update_user(self, user_id: int, new_info: dict) -> None:
@@ -82,15 +93,15 @@ class AdminUser(BaseUser):
                 if user.user_id == int(user_id):
                     user.show_info()
                     return
-        if user_email:
+        elif user_email:
             for user in users_db:
                 if user.user_email == user_email:
                     user.show_info()
                     return
-        if user_name:
+        elif user_name:
             for user in users_db:
                 if user.user_name == user_name:
                     user.show_info()
                     return
         else:
-            print("[ERROR] At least one attribute is needed to search (user_id, user_name, user_email).")
+            print("[ERROR] At least one attribute is needed to search (user_id, user_name, user_email).") 
